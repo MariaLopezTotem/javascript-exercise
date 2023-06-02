@@ -2,7 +2,10 @@
   "name": "javascript-exercise",
   "version": "1.0.0",
   "main": "index.js",
-  "repository": "https://github.com/ignacioazofeifa/javascript-exercise.git",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ignacioazofeifa/javascript-exercise.git"
+  },
   "author": "Ignacio Azofeifa <ignacio.azofeifa@totemcr.com>",
   "license": "MIT",
   "scripts": {
@@ -10,7 +13,16 @@
     "test": "jest --detectOpenHandles"
   },
   "dependencies": {
+    "express": "^4.18.2",
     "http": "^0.0.1-security",
     "jest": "^29.4.3"
+  },
+  "description": "This is a project of a series of exercises in Javascript.",
+  "bugs": {
+    "url": "https://github.com/ignacioazofeifa/javascript-exercise/issues"
+  },
+  "homepage": "https://github.com/ignacioazofeifa/javascript-exercise#readme",
+  "directories": {
+    "test": "test"
   }
 }

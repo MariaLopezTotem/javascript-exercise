@@ -1,10 +1,10 @@
-var http = require("http");
+const http = require('http');
 
 const initServer = () => {
   http
   .createServer(function (req, res) {
     //Here We add the calls for the functions
-    res.write(`Example: add 5 + 6 = ${add(5 + 6)}`);
+    res.write(`Example: add 5 + 6 = ${add(5, 6)}`);
     /**
      * Add calls
      */
@@ -17,13 +17,21 @@ const add = (a, b) => {
   return a + b;
 };
 
-exports.add = add;
+initServer();
+
+module.exports = { add };
 
 /**
  * Create a phone number from an array
  */
 // createPhoneNumber([1, 2, 3, 4, 5, 6, 7, 8, 9, 0])
 // => returns "(123) 456-7890"
+const array =[1, 2, 3, 4, 5, 6, 7, 8, 9, 0]
+function phoneNumber(array){
+
+}
+
+
 
 /**
  * Write a function that converts an object into an array,
