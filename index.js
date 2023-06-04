@@ -1,10 +1,12 @@
 const http = require('http');
+const _ = require('lodash');
 
 const initServer = () => {
   http
   .createServer(function (req, res) {
     //Here We add the calls for the functions
     res.write(`Example: add 5 + 6 = ${add(5, 6)}`);
+   // res.write(`Phone Number${phoneNumber([1, 2, 3, 4, 5, 6, 7, 8, 9, 0])}`);
     /**
      * Add calls
      */
@@ -20,6 +22,7 @@ const add = (a, b) => {
 initServer();
 
 module.exports = { add };
+module.exports = { phoneNumber };
 
 /**
  * Create a phone number from an array
@@ -28,7 +31,11 @@ module.exports = { add };
 // => returns "(123) 456-7890"
 const array =[1, 2, 3, 4, 5, 6, 7, 8, 9, 0]
 function phoneNumber(array){
-
+  if(!_.isEqual(array.length, 10)){//necesito validar que el arreglo contenga 10 elementos
+    const number = array.join("");
+    return `(${number.slice(0, 3)}) ${number.slice(3, 6)}-${number.slice(6, 10)}`
+    
+  }
 }
 
 
