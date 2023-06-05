@@ -5,68 +5,76 @@ const initServer = () => {
   http
   .createServer(function (req, res) {
     //Here We add the calls for the functions
-    res.write(`Example: add 5 + 6 = ${add(5, 6)}`);
-   // res.write(`Phone Number${phoneNumber([1, 2, 3, 4, 5, 6, 7, 8, 9, 0])}`);
-    /**
-     * Add calls
-     */
+   // const suma = add(5, 6);
+    const phoneNumber = createPhoneNumber([1, 2, 3, 4, 5, 6, 7, 8, 9, 0]);
+    const objToArray = createArray({ a: 1, b: 2 });
+    const groceryTotal = getTotalPrice({ product: "Milk", quantity: 1, price: 1.50 },{ product: "Cereals", quantity: 1, price: 2.50 });
+    const days = getDays(new Date("June 14, 2019"),new Date("June 20, 2019"));
+   // res.write(`Example: \n add 5 + 6 = ${suma}\n`);
+    res.write(`Phone number:\n ${phoneNumber}\n`)
+    res.write(`Object to Array:\n ${objToArray}\n`)
+    res.write(`Grocery toltal:\n ${groceryTotal}\n`)
+    res.write(`Get cantidad de dias:\n ${days}\n`)
+
     res.end(); //end the response
   })
   .listen(8080); //the server object listens on port 8080
 };
 
-const add = (a, b) => {
+function add(a, b){
   return a + b;
-};
+}
 
 initServer();
 
-module.exports = { add };
-module.exports = { phoneNumber };
+module.exports = { add, createPhoneNumber, createArray, getTotalPrice, getDays};
 
 /**
  * Create a phone number from an array
  */
-// createPhoneNumber([1, 2, 3, 4, 5, 6, 7, 8, 9, 0])
-// => returns "(123) 456-7890"
-const array =[1, 2, 3, 4, 5, 6, 7, 8, 9, 0]
-function phoneNumber(array){
-  if(!_.isEqual(array.length, 10)){//necesito validar que el arreglo contenga 10 elementos
+function createPhoneNumber(array){
+  const message = "formato del arreglo no valido"
+  if(_.isEqual(array.length, 10)){//necesito validar que el arreglo contenga 10 elementos
     const number = array.join("");
-    return `(${number.slice(0, 3)}) ${number.slice(3, 6)}-${number.slice(6, 10)}`
-    
+    return `(${number.slice(0, 3)}) ${number.slice(3, 6)}-${number.slice(6, 10)}`   
   }
+  return message;
 }
-
-
 
 /**
  * Write a function that converts an object into an array,
  * where each element represents a key-value pair in the form of an array.
  */
-// toArray({ a: 1, b: 2 })
-// => returns [["a", 1], ["b", 2]]
+
+function createArray(obj){
+  return Object.entries(obj)//funcion de caja que toma el objeto y lo hace en matriz de arreglos
+}
 
 /**
  * Create a function that takes two dates and
  * returns the number of days between the first and second date.
  */
-// getDays(
-//   new Date("June 14, 2019"),
-//   new Date("June 20, 2019")
-// )
-// => returns 6
+
+function getDays(date1, date2){
+  let diferencia = date2 - date1;
+  cantDias = Math.floor(diferencia/(1000 * 60 * 60 * 24)); //cantidad de milisegundos en un dia 
+  return cantDias;
+
+}
 
 /**
  * Create a function that takes an array of objects (groceries)
  * which calculates the total price and returns it as a number.
  * A grocery object has a product, a quantity and a price
- */
-// getTotalPrice([
-//   { product: "Milk", quantity: 1, price: 1.50 },
-//   { product: "Cereals", quantity: 1, price: 2.50 }
-// ])
-// => returns 4
+ */  
+function getTotalPrice(groceries){
+  let totalPrice = 0;
+  groceries.forEach(product => {
+    totalPrice += product.price;
+  })
+  return totalPrice;
+//[{ product: "Milk", quantity: 1, price: 1.50 },{ product: "Cereals", quantity: 1, price: 2.50 }]
+}
 
 /**
  * Create a function named that takes a string (URL) as input.
@@ -92,6 +100,10 @@ function phoneNumber(array){
 //   targetFile: "test.js",
 //   argumentsFile: "?ok=1"
 // }
+
+function decomposeUrl(url){
+//TODO
+}
 
 /**
  * Given an array, create a function that returns an object detailing
