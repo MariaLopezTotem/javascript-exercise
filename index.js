@@ -8,7 +8,10 @@ const initServer = () => {
    // const suma = add(5, 6);
     const phoneNumber = createPhoneNumber([1, 2, 3, 4, 5, 6, 7, 8, 9, 0]);
     const objToArray = createArray({ a: 1, b: 2 });
-    const groceryTotal = getTotalPrice({ product: "Milk", quantity: 1, price: 1.50 },{ product: "Cereals", quantity: 1, price: 2.50 });
+    const groceryTotal = getTotalPrice([
+      { product: "Milk", quantity: 1, price: 1.50 },
+      { product: "Cereals", quantity: 1, price: 2.50 }
+    ]);
     const days = getDays(new Date("June 14, 2019"),new Date("June 20, 2019"));
    // res.write(`Example: \n add 5 + 6 = ${suma}\n`);
     res.write(`Phone number:\n ${phoneNumber}\n`)
