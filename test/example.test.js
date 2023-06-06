@@ -1,10 +1,10 @@
 const functions = require("../index");
 
-/*test("Addition", async () => {
+test("Example", async () => {
   const expected = 5;
   const result = functions.add(2, 3);
   expect(result).toBe(expected);
-});*/
+});
 
 test("Phone Number", async () => {
   const expected = "(123) 456-7890";
@@ -40,5 +40,11 @@ test("Grocery total", async () => {
 test("Get days", async () => {
   const expected = 6;
   const result = functions.getDays(new Date("June 14, 2019"),  new Date("June 20, 2019"));
-  expect(result).toBe(expected); //to Equal es para comparar los objetos
+  expect(result).toBe(expected); 
+});
+
+test("Get repetidos", async () => {
+  const expected = { 0: 6, 5: 3, 12: 2, 1: 1 };
+  const result = functions.countRepetitions([1, 5, 5, 5, 12, 12, 0, 0, 0, 0, 0, 0]);
+  expect(result).toEqual(expected); 
 });

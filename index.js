@@ -5,7 +5,7 @@ const initServer = () => {
   http
   .createServer(function (req, res) {
     //Here We add the calls for the functions
-   // const suma = add(5, 6);
+    const suma = add(5, 6);
     const phoneNumber = createPhoneNumber([1, 2, 3, 4, 5, 6, 7, 8, 9, 0]);
     const objToArray = createArray({ a: 1, b: 2 });
     const groceryTotal = getTotalPrice([
@@ -13,11 +13,13 @@ const initServer = () => {
       { product: "Cereals", quantity: 1, price: 2.50 }
     ]);
     const days = getDays(new Date("June 14, 2019"),new Date("June 20, 2019"));
-   // res.write(`Example: \n add 5 + 6 = ${suma}\n`);
-    res.write(`Phone number:\n ${phoneNumber}\n`)
-    res.write(`Object to Array:\n ${objToArray}\n`)
-    res.write(`Grocery toltal:\n ${groceryTotal}\n`)
-    res.write(`Get cantidad de dias:\n ${days}\n`)
+    const arrayrepeated = countRepetitions([1, 5, 5, 5, 12, 12, 0, 0, 0, 0, 0, 0]);
+    res.write(`Example: \n add 5 + 6 = ${suma}\n\n`);
+    res.write(`Phone number:\n ${phoneNumber}\n\n`)
+    res.write(`Object to Array:\n ${objToArray}\n\n`)
+    res.write(`Grocery toltal:\n ${groceryTotal}\n\n`)
+    res.write(`Get cantidad de dias:\n ${days}\n\n`)
+    res.write(`Get repetidos:\n ${arrayrepeated}\n\n`)
 
     res.end(); //end the response
   })
@@ -30,7 +32,7 @@ function add(a, b){
 
 initServer();
 
-module.exports = { add, createPhoneNumber, createArray, getTotalPrice, getDays};
+module.exports = { add, createPhoneNumber, createArray, getTotalPrice, getDays, countRepetitions};
 
 /**
  * Create a phone number from an array
@@ -105,12 +107,22 @@ function getTotalPrice(groceries){
 // }
 
 function decomposeUrl(url){
-//TODO
+ 
 }
 
 /**
  * Given an array, create a function that returns an object detailing
  * how many times each element was repeated. Sort the object by value in descending order.
  */
-//countRepetitions([1, 5, 5, 5, 12, 12, 0, 0, 0, 0, 0, 0])
-// => returns { 0: 6, 5: 3, 12: 2, 1: 1 }
+function countRepetitions(array){
+  let repeated = {}; //obj para almacenar los repetidos
+  array.forEach(element =>{
+    let current = element; 
+    if(_.isEqual(repeated[current], undefined)){//ha sido encontrado el elemento antes?
+      repeated[current] = 1;
+    }else{
+      repeated[current]++;
+    }
+  })
+  return repeated;
+}
