@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">65% </span>
+                <span class="strong">59.09% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>26/40</span>
+                <span class='fraction'>26/44</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">65% </span>
+                <span class="strong">59.09% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>26/40</span>
+                <span class='fraction'>26/44</span>
             </div>
         
             
@@ -190,7 +190,17 @@
 <a name='L125'></a><a href='#L125'>125</a>
 <a name='L126'></a><a href='#L126'>126</a>
 <a name='L127'></a><a href='#L127'>127</a>
-<a name='L128'></a><a href='#L128'>128</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L128'></a><a href='#L128'>128</a>
+<a name='L129'></a><a href='#L129'>129</a>
+<a name='L130'></a><a href='#L130'>130</a>
+<a name='L131'></a><a href='#L131'>131</a>
+<a name='L132'></a><a href='#L132'>132</a>
+<a name='L133'></a><a href='#L133'>133</a>
+<a name='L134'></a><a href='#L134'>134</a>
+<a name='L135'></a><a href='#L135'>135</a>
+<a name='L136'></a><a href='#L136'>136</a>
+<a name='L137'></a><a href='#L137'>137</a>
+<a name='L138'></a><a href='#L138'>138</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
@@ -204,6 +214,8 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -293,6 +305,14 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -333,12 +353,14 @@ const initServer = () =&gt; {
     ]);
     const days = <span class="cstat-no" title="statement not covered" >getDays(new Date("June 14, 2019"),new Date("June 20, 2019"));</span>
     const arrayrepeated = <span class="cstat-no" title="statement not covered" >countRepetitions([1, 5, 5, 5, 12, 12, 0, 0, 0, 0, 0, 0]);</span>
+    const decomposedURL = <span class="cstat-no" title="statement not covered" >decomposeUrl("https://www.google.com/search/test.js?ok=1");</span>
 <span class="cstat-no" title="statement not covered" >    res.write(`Example: \n add 5 + 6 = ${suma}\n\n`);</span>
 <span class="cstat-no" title="statement not covered" >    res.write(`Phone number:\n ${phoneNumber}\n\n`)</span>
 <span class="cstat-no" title="statement not covered" >    res.write(`Object to Array:\n ${objToArray}\n\n`)</span>
 <span class="cstat-no" title="statement not covered" >    res.write(`Grocery toltal:\n ${groceryTotal}\n\n`)</span>
 <span class="cstat-no" title="statement not covered" >    res.write(`Get cantidad de dias:\n ${days}\n\n`)</span>
 <span class="cstat-no" title="statement not covered" >    res.write(`Get repetidos:\n ${arrayrepeated}\n\n`)</span>
+<span class="cstat-no" title="statement not covered" >    res.write(`Decomposed :\n ${decomposedURL}\n\n`)</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >    res.end(); </span>//end the response
   })
@@ -351,7 +373,7 @@ function add(a, b){
 &nbsp;
 initServer();
 &nbsp;
-module.exports = { add, createPhoneNumber, createArray, getTotalPrice, getDays, countRepetitions};
+module.exports = { add, createPhoneNumber, createArray, getTotalPrice, getDays, countRepetitions, decomposeUrl};
 &nbsp;
 /**
  * Create a phone number from an array
@@ -426,7 +448,15 @@ function getTotalPrice(groceries){
 // }
 &nbsp;
 function <span class="fstat-no" title="function not covered" >decomposeUrl(</span>url){
- 
+<span class="cstat-no" title="statement not covered" >  decomposed = new URL(url)</span>
+<span class="cstat-no" title="statement not covered" >  return {</span>
+    protocol: decomposed.protocol,
+    ipAdress: decomposed.ipAdress,
+    subDomain: decomposed.subDomain,
+    domainName: decomposed.domainName,
+    targetFile: decomposed.targetFile,
+    argumentsFile: decomposed.argumentsFile
+  }
 }
 &nbsp;
 /**
@@ -451,7 +481,7 @@ function countRepetitions(array){
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-06-06T13:49:08.479Z
+                at 2023-06-06T18:50:16.302Z
             </div>
         <script src="prettify.js"></script>
         <script>

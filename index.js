@@ -107,7 +107,6 @@ function getTotalPrice(groceries){
 // }
 
 function decomposeUrl(url){
- 
 }
 
 /**

@@ -48,3 +48,4 @@ test("Get repetidos", async () => {
   const result = functions.countRepetitions([1, 5, 5, 5, 12, 12, 0, 0, 0, 0, 0, 0]);
   expect(result).toEqual(expected); 
 });
+
